@@ -9,6 +9,7 @@ import { DoubleSide } from 'three'
 import Briques from './Briques'
 import Name from'./Name'
 import Nature from './Nature'
+import House from './House'
 
 
 
@@ -49,6 +50,7 @@ export default function App() {
           <Environment preset="park" />
           <Sky ref={pos} />
           <Nature/>
+          <House/>
         </Suspense>
         </PerspectiveCamera>
      

@@ -42,7 +42,13 @@ function Briques() {
         <Box position={[-10.5,2,5.5]} rotation={[0,Math.PI/2,0]} />
         <Pillar position={[10,2,2]}/>
         <Pillar position={[-10,2,2]}/>
-     
+        <Pillar position={[20,2,3]}/>
+        <Pillar position={[22,2,-3]}/>
+        <Pillar position={[40,2,-7]}/>
+        <Pillar position={[-20,2,-1]}/>
+        <Pillar position={[-27,2,1]}/>
+
+        <Box1 args={[8,2,6]}  position={[20,0,-19.5]} mass={1000}/>
     </group>
     )
 }
@@ -57,13 +63,13 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
       </mesh>
     )
   }
-  function Box1({ args = [0.3, 1, 0.3],rotation, ...props }) {
-    const [ref] = useBox(() => ({ mass: 200000, args, rotation,...props }))
+  function Box1({ args, ...props }) {
+    const [ref] = useBox(() => ({ args,...props }))
     return (
       <mesh
       ref={ref}  castShadow >
         <boxBufferGeometry args={args} />
-        <meshStandardMaterial  color="#FFFFFF" />
+        <meshStandardMaterial opacity={0} transparent={true} />
       </mesh>
     )
   }
