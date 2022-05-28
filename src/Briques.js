@@ -48,7 +48,17 @@ function Briques() {
         <Pillar position={[-20,2,-1]}/>
         <Pillar position={[-27,2,1]}/>
 
-        <Box1 args={[8,2,6]}  position={[20,0,-19.5]} mass={1000}/>
+        <Box1 args={[8,2,6]}  position={[20,0,-19.5]} mass={10000}/>
+        <Box1 args={[25,2,10]} position={[30,1,-60]} mass={10000} />
+        <Box1 args={[6,1,2]}  position={[5,1,-150]} mass={10000} />
+        <Box1 args={[5,1,2]}  position={[-20,1,-150]} mass={10000} />
+        <Box1 args={[5,1,2]}  position={[-7,0,-150]} mass={10000} />
+        <Box1 args={[5,1,3]}  position={[30,1,-125.5]} mass={10000} />
+        <Box1 args={[20,2,10]} position={[65,1,-60]} mass={10000} />
+        <Box1 args={[7,2,3]} position={[65,1,-54]} mass={10000} />
+
+        <Pillar position={[18,0,-121]}/>
+        <Pillar position={[0,0,-40]} />
     </group>
     )
 }

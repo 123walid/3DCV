@@ -1,30 +1,26 @@
 import React, { Suspense,useRef,useState} from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Physics, useCylinder, usePlane,useBox} from '@react-three/cannon'
+import { Physics, usePlane} from '@react-three/cannon'
 import {  Environment,PerspectiveCamera,Sky} from '@react-three/drei'
 import Vehicle from './Vehicle'
-import Textp from "./Text"
 import { Vector3 } from 'three'
 import { DoubleSide } from 'three'
 import Briques from './Briques'
 import Name from'./Name'
 import Nature from './Nature'
 import House from './House'
+import Stone from './Stone'
+import Description from './Description'
+import Contact from './Contact'
 
 
 
 export default function App() {
     const camera = useRef(null)
-    const pos=useRef(null)
     const  [vehiclepos, setvehiclepos] = useState(new Vector3( 0, -5, -8 ))
     useFrame(() => {    
      if(camera.current){
-      camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-15),0.03)
-    //  setpos([-vehiclepos.x.toFixed(0),vehiclepos.y.toFixed(0)+2,-vehiclepos.z.toFixed(0)])
-    if(pos){
-      //console.log(pos)
-    }
-      
+     camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-15),0.03)
     }
       
     })
@@ -41,16 +37,18 @@ export default function App() {
           <Plane rotation={[-Math.PI / 2, 0, 0]} userData={{ id: 'floor' }}/>
           <Vehicle setvehiclepos={setvehiclepos}
           position={[0,4, 0]} camera={camera} rotation={[0,-Math.PI, 0]} angularVelocity={[0, 0.5, 0]} wheelRadius={0.3} />
-          <Textp/>
+          <Description/>
           <Name />
           <Briques/>
           
         </Physics>
         <Suspense fallback={null}>
           <Environment preset="park" />
-          <Sky ref={pos} />
+          <Sky sunPosition={[0,100,1000]} distance={450000}  />
           <Nature/>
           <House/>
+          <Stone/>
+          <Contact/>
         </Suspense>
         </PerspectiveCamera>
      
@@ -70,14 +68,5 @@ function Plane(props) {
   )
 }
 
-function Pillar({ args = [0.4, 0.4, 1, 25], ...props }) {
-  const [ref] = useCylinder(() => ({ mass: 600000, args, ...props }))
-  return (
-    <mesh ref={ref} castShadow>
-      <cylinderGeometry args={args} />
-      <meshNormalMaterial />
-    </mesh>
-  )
-}
 
 
