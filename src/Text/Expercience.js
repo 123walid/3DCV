@@ -23,7 +23,7 @@ extend({ Text })
         <mesh
         >
              <text
-         position={[-3,8,-39]}
+         position={[-3,8,-40]}
          rotation={[0,-Math.PI/9,0]}
           {...opts}
           text={text}

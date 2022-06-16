@@ -7,20 +7,30 @@ import tunis from './assets/3D/Done/contact/Tunis.glb'
 import sign from './assets/3D/Done/contact/sign.glb'
 import sign1 from './assets/3D/Done/contact/sign1.glb'
 import flag from './assets/3D/Done/contact/alam2.glb'
+import balloon from './assets/3D/Done/balloon-spotter.glb'
 function Contact() {
     return(
     <mesh>
       <Email position={[5,2.5,-150]} scale={2} rotation={[0,Math.PI/2,0]} />
         <Git position={[-3,0,-150]} rotation={[Math.PI/2,0,0]}/>
         <Link position={[-20,2.5,-150]} scale={1} rotation={[0,0,0]}/>
-        <Tunisie position={[30,-2,-120]} scale={0.5} rotation={[0,-Math.PI/2,0]} />
+        <Tunisie position={[30,-2.28,-120]} scale={0.5} rotation={[0,-Math.PI/2,0]} />
         <Sign position={[-0.2,-8,-40]} scale={2} />
         <Sign1 position={[0,-8,-40]} rotation={[0,Math.PI/2,0]}  scale={2}/>
         <Flag position={[5,-1,-115]}  />
+        <Ballonn position={[-7,13,-150]} />
     </mesh>
     )
 }
 export default Contact
+function Ballonn(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={balloon} />
+    </mesh>
+  )
+}
 function Flag(props ) {
   return (
       

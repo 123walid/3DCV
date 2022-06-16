@@ -20,7 +20,7 @@ export default function App() {
     const  [vehiclepos, setvehiclepos] = useState(new Vector3( 0, -5, -8 ))
     useFrame(() => {    
      if(camera.current){
-     camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-15),0.03)
+     camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-20),0.03)
     }
       
     })
