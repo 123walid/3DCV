@@ -1,5 +1,4 @@
 import React from "react"
-import Expercience from "./Text/Expercience"
 import CardText from "./CardText"
 function Description() {
     return(
