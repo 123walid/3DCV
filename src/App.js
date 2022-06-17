@@ -13,8 +13,6 @@ import Stone from './Stone'
 import Description from './Description'
 import Contact from './Contact'
 
-
-
 export default function App() {
     const camera = useRef(null)
     const  [vehiclepos, setvehiclepos] = useState(new Vector3( 0, -5, -8 ))

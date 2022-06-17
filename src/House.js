@@ -14,7 +14,7 @@ function House() {
         <House2 position={[30,0,-60]} />
         <House3 position={[65,0,-62]} />
         <House4 position={[95,0,-60]}/>
-        <Company position={[-30,0,-60]} scale={0.5} />
+        <Company position={[-60,0,-60]} scale={0.5} />
         
     </mesh>
     )
