@@ -57,7 +57,9 @@ function Briques() {
         <Box1 args={[20,2,10]} position={[65,1,-60]} mass={10000} />
         <Box1 args={[7,2,3]} position={[65,1,-54]} mass={10000} />
         <Box1 args={[11,2,7.5]} position={[-60,1,-60]} mass={10000} />
-        <Box1 args={[17,2,20]} position={[95,1,-60]} />
+        <Box1 args={[17,2,20]} position={[95,1,-60]}  mass={10000} />
+        <Box1 args={[10,2,7]} position ={[-140,0,-60]} mass={10000}/>
+        <Box1 args={[9,2,9]} position ={[-100,0,-60]} mass={10000}/>
 
         <Pillar position={[18,0,-121]}/>
         <Pillar position={[0,0,-40]} />

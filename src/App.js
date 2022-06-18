@@ -12,6 +12,7 @@ import House from './House'
 import Stone from './Stone'
 import Description from './Description'
 import Contact from './Contact'
+import ImageLoader from './ImageLoader'
 
 export default function App() {
     const camera = useRef(null)
@@ -42,11 +43,12 @@ export default function App() {
         </Physics>
         <Suspense fallback={null}>
           <Environment preset="park" />
-          <Sky sunPosition={[0,100,1000]} distance={450000}  />
+          <Sky sunPosition={[0,100,1000]} distance={1000000}  />
           <Nature/>
           <House/>
           <Stone/>
           <Contact/>
+          
         </Suspense>
         </PerspectiveCamera>
      

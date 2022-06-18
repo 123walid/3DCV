@@ -3,7 +3,6 @@ import CardText from "./CardText"
 function Description() {
     return(
     <mesh>
-          <CardText position={[-54,2.7,-53]} text={"Development of agricultural products traceability application with blockchain technology "} fontSize={1.5} maxWidth={25} />
           <CardText position={[20,1.5,-53]} text={"Engineering Student in ISAMM  10/2021- present"} fontSize={1.2}  maxWidth={20} />
           <CardText position={[58,2,-51]} text={"Applied License in Information Systems Development  ISET KEF  09/2018-07-2021"} fontSize={1} maxWidth={15} />
           <CardText position={[87,2,-49]} text={"Baccalaureate in Mathematics Ibn Zaidoun secondary school  2018"} fontSize={1} maxWidth={15} />
