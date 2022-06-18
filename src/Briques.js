@@ -61,6 +61,15 @@ function Briques() {
         <Box1 args={[10,2,7]} position ={[-140,0,-60]} mass={10000}/>
         <Box1 args={[9,2,9]} position ={[-100,0,-60]} mass={10000}/>
 
+        <Box1 args={[3,2,5]} position ={[50,1,-18]} mass={10000}/>
+        <Box1 args={[3,2,5]} position ={[60,1,-18]} mass={10000}/>
+        <Box1 args={[3,2,5]} position ={[70,1,-18]} mass={10000}/>
+
+        <Box1 args={[1,2,1]} position ={[54,1,-18]} mass={10000}/>
+        <Box1 args={[1,2,1]} position ={[64,1,-18]} mass={10000}/>
+        <Box1 args={[1,2,1]} position ={[74,1,-18]} mass={10000}/>
+
+        <Pillar args={[2,2,2,25]} position={[30,0.1,-18]} />
         <Pillar position={[18,0,-121]}/>
         <Pillar position={[0,0,-40]} />
     </group>

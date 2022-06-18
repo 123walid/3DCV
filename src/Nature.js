@@ -3,24 +3,26 @@ import Model from "./Model";
 // ******************** GLB OBJECTS *************************
 import TreeLimeGlb from "./assets/3D/3D_GLB/Nature/TreeLime.glb"
 import TreeLimeGlb1 from "./assets/3D/3D_GLB/Nature/TreeLime1.glb"
-import TreeLimeGlb2 from "./assets/3D/3D_GLB/Nature/TreeLime2.glb"
 import TreeLimeGlb3 from "./assets/3D/3D_GLB/Nature/TreeLime3.glb"
-import TreeLimeGlb4 from "./assets/3D/3D_GLB/Nature/TreeLime4.glb"
-import TreeLimeGlb5 from "./assets/3D/3D_GLB/Nature/TreeLime5.glb"
 import TreeRoundedGlb from "./assets/3D/3D_GLB/Nature/TreeRounded.glb"
 import TreeRoundedGlb1 from "./assets/3D/3D_GLB/Nature/TreeRounded1.glb"
 import TreeRoundedGlb2 from "./assets/3D/3D_GLB/Nature/TreeRounded2.glb"
 import TreeRoundedGlb3 from "./assets/3D/3D_GLB/Nature/TreeRounded3.glb"
-import TreeRoundedGlb4 from "./assets/3D/3D_GLB/Nature/TreeRounded4.glb"
-import TreeRoundedGlb5 from "./assets/3D/3D_GLB/Nature/TreeRounded5.glb"
 import grass from './assets/3D/Done/Grass_M/grass.glb'
 import grass1 from './assets/3D/Done/Grass_M/grass1.glb'
 import grass2 from './assets/3D/Done/Grass_M/grass2.glb'
 import grass3 from './assets/3D/Done/Grass_M/grass3.glb'
 import grass4 from './assets/3D/Done/Grass_M/grass-long.glb'
 import grass5 from './assets/3D/Done/Grass_M/grass-long1.glb'
-import grass6 from './assets/3D/Done/Grass_M/grass-long2.glb'
-import grass7 from './assets/3D/Done/Grass_M/grass-long3.glb'
+import well from './assets/3D/Done/well.glb'
+import f1 from './assets/3D/Done/carnations.glb'
+import cannon from './assets/3D/Done/cannon/cannon.glb'
+import cannon1 from './assets/3D/Done/cannon/cannon1.glb'
+import cannon2 from './assets/3D/Done/cannon/cannon2.glb'
+import cballs from './assets/3D/Done/cannon/cannonballs.glb'
+import cballs1 from './assets/3D/Done/cannon/cannonballs1.glb'
+import cballs2 from './assets/3D/Done/cannon/cannonballs2.glb'
+
 function Nature() {
     return(
     <mesh>
@@ -41,13 +43,83 @@ function Nature() {
         <Tree6 position={[-27,0,1]}  />
         <Grass4 position={[-27,0.1,1]}  />
         <Grass5 position={[-27,0.1,1]} rotation={[0,Math.PI/2,0]} />
-
-        
-        
+        <Well  position={[30,0.1,-18]}  scale={3} rotation={[0,Math.PI/2,0]} />
+        <Flower1  position={[27,0.1,-18]}  scale={2} />
+        <Cannon position={[50,0.1,-18]} scale={2} />
+        <CannonBalls2 position={[54,0.1,-18]} scale={2}   />
+        <Cannon1 position={[60,0.1,-18]} scale={2} />
+        <CannonBalls1 position={[64,0.1,-18]} scale={2}   />
+        <Cannon2 position={[70,0.1,-18]} scale={2} />
+        <CannonBalls position={[74,0.1,-18]} scale={2}   />
         
     </mesh>
     )
 }
+function CannonBalls2(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={cballs2} />
+    </mesh>
+  )
+}
+function CannonBalls1(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={cballs1} />
+    </mesh>
+  )
+}
+function CannonBalls(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={cballs} />
+    </mesh>
+  )
+}
+function Cannon2(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={cannon2} />
+    </mesh>
+  )
+}
+function Cannon1(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={cannon1} />
+    </mesh>
+  )
+}
+function Cannon(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={cannon} />
+    </mesh>
+  )
+}
+function Flower1(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={f1} />
+    </mesh>
+  )
+}
+function Well(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={well} />
+    </mesh>
+  )
+}
+
 function Grass5(props ) {
   return (
       
@@ -96,23 +168,6 @@ function Grass(props ) {
     </mesh>
   )
 }
-
-function Tree12(props ) {
-  return (
-      
-    <mesh {...props} >
-     <Model obj={TreeRoundedGlb5} />
-    </mesh>
-  )
-}
-function Tree11(props ) {
-  return (
-      
-    <mesh {...props} >
-     <Model obj={TreeRoundedGlb4} />
-    </mesh>
-  )
-}
 function Tree10(props ) {
   return (
       
@@ -129,35 +184,11 @@ function Tree9(props ) {
     </mesh>
   )
 }
-function Tree8(props ) {
-  return (
-      
-    <mesh {...props} >
-     <Model obj={TreeLimeGlb5} />
-    </mesh>
-  )
-}
-function Tree7(props ) {
-  return (
-      
-    <mesh {...props} >
-     <Model obj={TreeLimeGlb4} />
-    </mesh>
-  )
-}
 function Tree6(props ) {
   return (
       
     <mesh {...props} >
      <Model obj={TreeLimeGlb3} />
-    </mesh>
-  )
-}
-function Tree5(props ) {
-  return (
-      
-    <mesh {...props} >
-     <Model obj={TreeLimeGlb2} />
     </mesh>
   )
 }
