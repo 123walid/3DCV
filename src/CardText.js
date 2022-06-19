@@ -9,7 +9,6 @@ function CardText(props) {
       maxWidth = {props.maxWidth}
       color={"black"}
       fontSize={props.fontSize}
-      font="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap"
       anchorX="left"
       anchorY="middle"
       textAlign="center"

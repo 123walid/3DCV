@@ -16,12 +16,12 @@ import img from './assets/elgazela.png';
 import prologic from './assets/prol.jpg'
 import telecome from './assets/telecome.jpg'
 function House() {
-
   const [txt,setTxt] =useState(-1);
   
   const handleActive=(key)=>{
     setTxt(key===txt ? -1 : key);
   }
+ 
 
     return(
     <mesh>
@@ -29,9 +29,9 @@ function House() {
         <House3 position={[65,0,-62]} />
         <House4 position={[95,0,-60]}/>
 
-        <Company  onClick={()=>handleActive(0)}  position={[-60,0,-60]}  scale={0.5}  />
-        <Company1 onClick={()=>handleActive(1)} position ={[-140,0,-60]}   scale={0.5}/>
-        <Company2 onClick={()=>handleActive(2)} position ={[-100,0,-60]}   scale={0.5}/>
+        <Company onPointerEnter={()=>  console.log()}  onClick={()=>handleActive(0)}  position={[-60,0,-60]}  scale={0.5}  />
+        <Company1 onPointerEnter={()=> console.log('it works')}  onClick={()=>handleActive(1)} position ={[-140,0,-60]}   scale={0.5}/>
+        <Company2 onPointerEnter={()=> console.log('it works')}  onClick={()=>handleActive(2)} position ={[-100,0,-60]}   scale={0.5}/>
 
         <ImageLoader img={img} scaleX={7} scaleY={5} position={[-57,16,-56.7]} />
         <ImageLoader img={prologic} scaleX={7} scaleY={5} position={[-100,16,-56]} />
@@ -55,7 +55,7 @@ export default House
 function Company2(props ) {
   return (
       
-    <mesh   {...props}  >
+    <mesh  {...props}  >
      <Model onClick={props.onClick} obj={company2} />
     </mesh>
   )
