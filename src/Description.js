@@ -12,7 +12,8 @@ function Description() {
           <CardText position={[-6,8,-40]} text={"Expercience"} fontSize={1} rotation={[0,-Math.PI/9,0]} />   
           <CardText position={[-15,11,-150]} text={"Click The Icons "} fontSize={2.5} /> 
           <CardText position={[-7.5,0.1,7]} text={" ZQSD to drive, space to brake and R to reset "} rotation={[-Math.PI/2,0,0]}  fontSize={1}  maxWidth={15} />      
-    </mesh>
+            
+  </mesh>
     )
 }
 export default Description
