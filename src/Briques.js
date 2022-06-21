@@ -102,7 +102,7 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
     return (
       <mesh ref={ref} castShadow>
         <cylinderGeometry args={args} />
-        <meshStandardMaterial opacity={1} transparent={true} />
+        <meshStandardMaterial opacity={0} transparent={true} />
       </mesh>
     )
   }
