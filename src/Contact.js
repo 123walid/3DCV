@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useCallback,useEffect} from "react"
 import Model from "./Model";
 import email from './assets/3D/Done/contact/email.glb'
 import git from './assets/3D/Done/contact/github.glb'
@@ -9,11 +9,15 @@ import sign1 from './assets/3D/Done/contact/sign1.glb'
 import flag from './assets/3D/Done/contact/alam2.glb'
 import balloon from './assets/3D/Done/balloon-spotter.glb'
 function Contact() {
+  const [hovered, setHover] = useState(false)
+  useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
+  const onPointerOver = useCallback(() => setHover(true), [])
+   const onPointerOut = useCallback(() => setHover(false), [])
     return(
     <mesh>
-      <Email position={[5,2.5,-150]} scale={2} rotation={[0,Math.PI/2,0]} />
-        <Git position={[-3,0,-150]} rotation={[Math.PI/2,0,0]}/>
-        <Link position={[-20,2.5,-150]} scale={1} rotation={[0,0,0]}/>
+      <Email  onPointerOver={onPointerOver} onPointerOut={onPointerOut} position={[5,2.5,-150]} scale={2} rotation={[0,Math.PI/2,0]} />
+        <Git  onPointerOver={onPointerOver} onPointerOut={onPointerOut} position={[-3,0,-150]} rotation={[Math.PI/2,0,0]}/>
+        <Link  onPointerOver={onPointerOver} onPointerOut={onPointerOut} position={[-20,2.5,-150]} scale={1} rotation={[0,0,0]}/>
         <Tunisie position={[30,-2.28,-120]} scale={0.5} rotation={[0,-Math.PI/2,0]} />
         <Sign position={[-0.2,-8,-40]} scale={2} />
         <Sign1 position={[0,-8,-40]} rotation={[0,Math.PI/2,0]}  scale={2}/>

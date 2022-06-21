@@ -1,4 +1,4 @@
-import {useBox,useCylinder} from '@react-three/cannon'
+import {useBox,useCylinder,useSphere} from '@react-three/cannon'
 
 
 function Briques() {
@@ -68,10 +68,11 @@ function Briques() {
         <Box1 args={[1,2,1]} position ={[54,1,-18]} mass={10000}/>
         <Box1 args={[1,2,1]} position ={[64,1,-18]} mass={10000}/>
         <Box1 args={[1,2,1]} position ={[74,1,-18]} mass={10000}/>
-
         <Pillar args={[2,2,2,25]} position={[30,0.1,-18]} />
         <Pillar position={[18,0,-121]}/>
         <Pillar position={[0,0,-40]} />
+        
+        
     </group>
     )
 }
@@ -99,10 +100,19 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
   function Pillar({ args = [0.5, 0.5, 1, 25], ...props }) {
     const [ref] = useCylinder(() => ({ mass: 600000, args, ...props }))
     return (
-      <mesh ref={ref} castShadow>z
+      <mesh ref={ref} castShadow>
         <cylinderGeometry args={args} />
-        <meshStandardMaterial opacity={0} transparent={true} />
+        <meshStandardMaterial opacity={1} transparent={true} />
       </mesh>
     )
   }
+  function Sphere ({ args=[1,30,30], ...props} )  {
+    const [ref] = useSphere(()=>({mass: 1 , args, ...props}))
+    return (
+     <mesh ref={ref} castShadow  >
+      <sphereBufferGeometry args={args}  />
+      <meshStandardMaterial color={0xfff1ef}  />
+     </mesh>
+    );
+   }
 export default Briques

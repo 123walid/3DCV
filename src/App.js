@@ -1,4 +1,4 @@
-import React, { Suspense,useRef,useState} from 'react'
+import React, { Suspense,useEffect,useRef,useState} from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Physics, usePlane} from '@react-three/cannon'
 import {  Environment,PerspectiveCamera,Sky} from '@react-three/drei'
@@ -12,17 +12,26 @@ import House from './House'
 import Stone from './Stone'
 import Description from './Description'
 import Contact from './Contact'
-import ImageLoader from './ImageLoader'
-
+import CardText from './CardText'
 export default function App() {
     const camera = useRef(null)
+
     const  [vehiclepos, setvehiclepos] = useState(new Vector3( 0, -5, -8 ))
     useFrame(() => {    
      if(camera.current){
      camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-20),0.03)
+     
     }
-      
+    ShowText(0)
     })
+ const [tt,setText]= useState(-1)
+ const ShowText=(key)=>{
+  if(vehiclepos.x.toFixed(0)<=-50 && vehiclepos.x.toFixed(0)>=-170 && vehiclepos.z<=-20 && vehiclepos.z>-70){
+    setText(key)
+  }else{
+    setText(-1)
+  }
+ }
   return (
     <>
      
@@ -39,8 +48,11 @@ export default function App() {
           <Description/>
           <Name />
           <Briques/>
-          
         </Physics>
+        {tt=== 0 && <CardText position={[-59,22,-55]} text={" Click me "} fontSize={1.5} maxWidth={25} />}
+        {tt=== 0 && <CardText position={[-102,25,-55]} text={" Click me "} fontSize={1.5} maxWidth={25} />}
+        {tt=== 0 && <CardText position={[-142,20,-55]} text={" Click me "} fontSize={1.5} maxWidth={25} />}
+
         <Suspense fallback={null}>
           <Environment preset="park" />
           <Sky sunPosition={[0,100,1000]} distance={1000000}  />
@@ -48,12 +60,12 @@ export default function App() {
           <House/>
           <Stone/>
           <Contact/>
-          
         </Suspense>
         </PerspectiveCamera>
      
     </>
   )
+    
 }
 
 function Plane(props) {
