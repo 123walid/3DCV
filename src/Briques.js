@@ -1,7 +1,8 @@
 import {useBox,useCylinder,useSphere} from '@react-three/cannon'
-
-
+import * as THREE from "three"
+import football from './assets/football.jpg'
 function Briques() {
+  
     return(
     <group>
         <Box position={[15,1,4]} />
@@ -68,10 +69,13 @@ function Briques() {
         <Box1 args={[1,2,1]} position ={[54,1,-18]} mass={10000}/>
         <Box1 args={[1,2,1]} position ={[64,1,-18]} mass={10000}/>
         <Box1 args={[1,2,1]} position ={[74,1,-18]} mass={10000}/>
+
+        <Box1 args={[30,2,1]} position ={[-72,1,-10]} mass={10000}/>
+        <Box1 args={[40,2,1]} position ={[-78,1,-20]} mass={10000}/>
         <Pillar args={[2,2,2,25]} position={[30,0.1,-18]} />
         <Pillar position={[18,0,-121]}/>
         <Pillar position={[0,0,-40]} />
-        
+        <Ball  />
         
     </group>
     )
@@ -106,13 +110,18 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
       </mesh>
     )
   }
-  function Sphere ({ args=[1,30,30], ...props} )  {
-    const [ref] = useSphere(()=>({mass: 1 , args, ...props}))
+   function Ball() {
+    const [ref] = useSphere(() => ({
+      mass: 1,
+      position: [-60, 5, -15],
+      args: 0.5
+    }))
+    const texture = new THREE.TextureLoader().load(football)
     return (
-     <mesh ref={ref} castShadow  >
-      <sphereBufferGeometry args={args}  />
-      <meshStandardMaterial color={0xfff1ef}  />
-     </mesh>
-    );
-   }
+      <mesh castShadow receiveShadow ref={ref}>
+        <sphereGeometry args={[0.5, 64, 64]} />
+        <meshLambertMaterial color="white" map={texture}/>
+      </mesh>
+    )
+  }
 export default Briques
