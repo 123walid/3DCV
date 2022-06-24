@@ -15,12 +15,10 @@ import Contact from './Contact'
 import CardText from './CardText'
 export default function App() {
     const camera = useRef(null)
-
     const  [vehiclepos, setvehiclepos] = useState(new Vector3( 0, -5, -8 ))
     useFrame(() => {  
-
      if(camera.current){
-      if(vehiclepos.x.toFixed(0)<=-40 && vehiclepos.x.toFixed(0)>=-140 && vehiclepos.z<=-6 && vehiclepos.z>-25){
+      if(vehiclepos.x.toFixed(0)<=-40 && vehiclepos.x.toFixed(0)>=-140 && vehiclepos.z<=-5 && vehiclepos.z>-25){
         camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-14,-vehiclepos.z.toFixed(0)-25),0.03)
       } 
       if (vehiclepos.x.toFixed(0)>=15 && vehiclepos.x.toFixed(0)<=130 && vehiclepos.z<=-50 && vehiclepos.z>=-100){
@@ -31,6 +29,7 @@ export default function App() {
       }else{
         camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-20),0.03)
       }
+     
     }
     ShowText(0)
     })
@@ -57,7 +56,7 @@ export default function App() {
           position={[0,4, 0]} camera={camera} rotation={[0,-Math.PI, 0]} angularVelocity={[0, 0.5, 0]} wheelRadius={0.3} />
           <Description/>
           <Name />
-          <Briques/>
+          <Briques  />
         </Physics>
         {tt=== 0 && <CardText position={[-59,22,-55]} text={" Click me "} fontSize={1.5} maxWidth={25} />}
         {tt=== 0 && <CardText position={[-102,25,-55]} text={" Click me "} fontSize={1.5} maxWidth={25} />}
@@ -67,7 +66,7 @@ export default function App() {
           <Environment preset="park" />
           <Sky sunPosition={[0,100,1000]} distance={1000000}  />
           <Nature/>
-          <House/>
+          <House />
           <Stone/>
           <Contact/>
         </Suspense>

@@ -52,7 +52,6 @@ function Vehicle({ radius = 0.7,setvehiclepos,width = 1.2, height = -0.04, front
     setvehiclepos(chassis.current.position)
     
 if (reset) {
-      console.log(chassis.current.position)
       chassis.current.api.position.set(chassis.current.position.x,chassis.current.position.y,chassis.current.position.z)
       chassis.current.api.velocity.set(0, 0, 0)
       chassis.current.api.angularVelocity.set(0, 0.5, 0)

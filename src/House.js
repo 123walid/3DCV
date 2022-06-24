@@ -19,6 +19,8 @@ import fence6 from './assets/3D/Done/fence/fence6.glb'
 import fence7 from './assets/3D/Done/fence/fence7.glb'
 import fence8 from './assets/3D/Done/fence/fence8.glb'
 import fence9 from './assets/3D/Done/fence/fence9.glb'
+import fence10 from './assets/3D/Done/fence/fence10.glb'
+import goal from './assets/3D/Done/goal.glb'
 
 
 import ImageLoader from "./ImageLoader";
@@ -26,7 +28,6 @@ import img from './assets/elgazela.png';
 import prologic from './assets/prol.jpg'
 import telecome from './assets/telecome.jpg'
 function House() {
-
   const [txt,setTxt] =useState(-1);
   
   const handleActive=(key)=>{
@@ -55,6 +56,8 @@ function House() {
         <Fence7 position={[-72,0,-10]}  scale={[3,2.5,1]}  rotation={[0,Math.PI,0]} />
         <Fence8 position={[-78,0,-10]}  scale={[3,2.5,1]}  rotation={[0,Math.PI,0]} />
         <Fence9 position={[-84,0,-10]}  scale={[3,2.5,1]}  rotation={[0,Math.PI,0]} />
+        <Fence10 position={[-90,0,-10]}  scale={[3,2.5,1]}  rotation={[0,Math.PI,0]} />
+        <Goal position={[-105,0,-19]} rotation={[0,-Math.PI/2,0]} scale={[0.04,0.05,0.05]} />
         <Company onPointerOver={onPointerOver} onPointerOut={onPointerOut} onClick={()=>handleActive(0)}  position={[-60,0,-60]}  scale={0.5}  />
         <Company1 onPointerOver={onPointerOver} onPointerOut={onPointerOut}  onClick={()=>handleActive(1)} position ={[-140,0,-60]}   scale={0.5}/>
         <Company2 onPointerOver={onPointerOver} onPointerOut={onPointerOut}  onClick={()=>handleActive(2)} position ={[-100,0,-60]}   scale={0.5}/>
@@ -69,6 +72,22 @@ function House() {
     )
 }
 export default House
+function Goal(props ) {
+  return (
+      
+    <mesh  {...props}  >
+     <Model obj={goal} />
+    </mesh>
+  )
+}
+function Fence10(props ) {
+  return (
+      
+    <mesh  {...props}  >
+     <Model obj={fence10} />
+    </mesh>
+  )
+}
 function Fence9(props ) {
   return (
       
@@ -210,4 +229,3 @@ function House1(props ) {
       </mesh>
     )
   }
- 

@@ -2,6 +2,7 @@ import {useBox,useCylinder,useSphere} from '@react-three/cannon'
 import * as THREE from "three"
 import football from './assets/football.jpg'
 function Briques() {
+
   
     return(
     <group>
@@ -70,12 +71,16 @@ function Briques() {
         <Box1 args={[1,2,1]} position ={[64,1,-18]} mass={10000}/>
         <Box1 args={[1,2,1]} position ={[74,1,-18]} mass={10000}/>
 
-        <Box1 args={[30,2,1]} position ={[-72,1,-10]} mass={10000}/>
+        <Box1 args={[35,2,1]} position ={[-75,1,-10]} mass={10000}/>
         <Box1 args={[40,2,1]} position ={[-78,1,-20]} mass={10000}/>
+        <Box1 args={[8,2,1]} position ={[-107,1,-15]} mass={10000} rotation={[0,Math.PI/2,0]} />
+        <Box1 args={[3,2,1]} position ={[-105,1,-19]} mass={10000}  />
+        <Box1 args={[3,2,1]} position ={[-105,1,-11]} mass={10000}  />
+
         <Pillar args={[2,2,2,25]} position={[30,0.1,-18]} />
         <Pillar position={[18,0,-121]}/>
         <Pillar position={[0,0,-40]} />
-        <Ball  />
+        <Ball position={[-60, 5, -15]} />
         
     </group>
     )
@@ -110,11 +115,10 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
       </mesh>
     )
   }
-   function Ball() {
+   function Ball(props) {
     const [ref] = useSphere(() => ({
       mass: 1,
-      position: [-60, 5, -15],
-      args: 0.5
+      args: 0.5, ...props
     }))
     const texture = new THREE.TextureLoader().load(football)
     return (
