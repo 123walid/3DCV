@@ -1,4 +1,4 @@
-import React, { Suspense,useEffect,useRef,useState} from 'react'
+import React, { Suspense,useRef,useState} from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Physics, usePlane} from '@react-three/cannon'
 import {  Environment,PerspectiveCamera,Sky} from '@react-three/drei'
@@ -14,25 +14,31 @@ import Description from './Description'
 import Contact from './Contact'
 import CardText from './CardText'
 export default function App() {
+  const vec = new Vector3(0,0,0)
+
     const camera = useRef(null)
-    const  [vehiclepos, setvehiclepos] = useState(new Vector3( 0, -5, -8 ))
-    useFrame(() => {  
+    const  [vehiclepos, setvehiclepos] = useState(vec.set( 0, -5, -8 ))
+  
+    useFrame(() => {
      if(camera.current){
       if(vehiclepos.x.toFixed(0)<=-40 && vehiclepos.x.toFixed(0)>=-140 && vehiclepos.z<=-5 && vehiclepos.z>-25){
-        camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-14,-vehiclepos.z.toFixed(0)-25),0.03)
+        camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-14,-vehiclepos.z.toFixed(0)-25),0.03)
+        camera.current.updateProjectionMatrix();
       } 
       if (vehiclepos.x.toFixed(0)>=15 && vehiclepos.x.toFixed(0)<=130 && vehiclepos.z<=-50 && vehiclepos.z>=-100){
-        camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-14,-vehiclepos.z.toFixed(0)-21),0.03)
+        camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-14,-vehiclepos.z.toFixed(0)-21),0.03)
+        camera.current.updateProjectionMatrix();
       }
       if (vehiclepos.x.toFixed(0)<=-50 && vehiclepos.x.toFixed(0)>=-155 && vehiclepos.z<=-60 && vehiclepos.z>=-90){
-        camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-24.5,-vehiclepos.z.toFixed(0)-25),0.03)
+        camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-24.5,-vehiclepos.z.toFixed(0)-25),0.03)
+        camera.current.updateProjectionMatrix();
       }else{
-        camera.current.position.lerp(new Vector3(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-20),0.03)
+       camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-20),0.03)
+       camera.current.updateProjectionMatrix();
       }
-     
     }
     ShowText(0)
-    })
+    } )
  const [tt,setText]= useState(-1)
  const ShowText=(key)=>{
   if(vehiclepos.x.toFixed(0)<=-50 && vehiclepos.x.toFixed(0)>=-170 && vehiclepos.z<=-20 && vehiclepos.z>-70){
@@ -50,7 +56,7 @@ export default function App() {
         <color attach="background" args={['#171720']} />
         <ambientLight color={0xffffff} intensity={0.5} />
         <directionalLight position={[200, 500, 300]} color={0xffffff} intensity={0.5} castShadow penumbra={1} />
-        <Physics broadphase="SAP" contactEquationRelaxation={4} friction={1e-3} allowSleep>
+        <Physics broadphase="SAP" contactEquationRelaxation={4} friction={10}>
           <Plane rotation={[-Math.PI / 2, 0, 0]} userData={{ id: 'floor' }}/>
           <Vehicle setvehiclepos={setvehiclepos}
           position={[0,4, 0]} camera={camera} rotation={[0,-Math.PI, 0]} angularVelocity={[0, 0.5, 0]} wheelRadius={0.3} />
@@ -83,7 +89,7 @@ function Plane(props) {
     <group ref={ref}>
       <mesh receiveShadow  >
         <planeGeometry args={[10000, 10000]} />
-        <meshStandardMaterial color="#696969"  side={DoubleSide} friction={0}/>
+        <meshStandardMaterial color="#696969"  side={DoubleSide} />
       </mesh>
     </group>
   )
