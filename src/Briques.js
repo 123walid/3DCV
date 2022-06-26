@@ -73,21 +73,21 @@ function Briques() {
         <Box1 args={[1,2,1]} position ={[74,1,-18]} mass={10000}/>
 
         
-        <Box1 args={[10,2,1]} position ={[-92,1,-14]} mass={10000} rotation={[0,Math.PI/2,0]} />
-        <Box1 args={[3,2,1]} position ={[-90,1,-19]} mass={10000}  />
-        <Box1 args={[3,2,1]} position ={[-90,1,-9]} mass={10000}  />
+        <Box1 args={[8,2,1]} position ={[-92,1,-6]} mass={10000} rotation={[0,Math.PI/2,0]} />
+        <Box1 args={[3,2,1]} position ={[-90,1,-10]} mass={10000}  />
+        <Box1 args={[3,2,1]} position ={[-90,1,-2]} mass={10000}  />
 
         <Pillar args={[2,2,2,25]} position={[30,0.1,-18]} />
         <Pillar position={[18,0,-121]}/>
         <Pillar position={[0,0,-40]} />
-        <Ball position={[-55, 5, -12]} />
+        <Ball position={[-55, 5, -4]} />
 
-        <Cone position={[-54,5,-20]}  mass={0.4} />
-        <Cone position={[-66,5,-20]} mass={0.4} />
-        <Cone position={[-78,5,-20]} mass={0.4} />
-        <Cone position={[-54,5,-7]}  mass={0.4} />
-        <Cone position={[-66,5,-7]} mass={0.4} />
-        <Cone position={[-78,5,-7]} mass={0.4} />
+        <Cone position={[-54,5,-11]}  mass={0.4} />
+        <Cone position={[-66,5,-11]} mass={0.4} />
+        <Cone position={[-78,5,-11]} mass={0.4} />
+        <Cone position={[-54,5,2]}  mass={0.4} />
+        <Cone position={[-66,5,2]} mass={0.4} />
+        <Cone position={[-78,5,2]} mass={0.4} />
     </group>
     )
 }

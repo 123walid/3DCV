@@ -67,7 +67,7 @@ function House() {
        <ImageLoader img={img} scaleX={7} scaleY={5} position={[-57,16,-56.7]} />
         <ImageLoader img={prologic} scaleX={7} scaleY={5} position={[-100,16,-56]} />
         <ImageLoader img={telecome} scaleX={7} scaleY={5} position={[-140,15,-56.7]} />
-        <Goal position={[-90,0,-19]} rotation={[0,-Math.PI/2,0]} scale={[0.05,0.07,0.06]} />
+        <Goal position={[-90,0,-10]} rotation={[0,-Math.PI/2,0]} scale={[0.04,0.07,0.06]} />
         <Ship position={[-110,8,0]} scale={4} rotation={[0,Math.PI/4,0]} />
         <Spaceman position={[-116,6,3]} />
         <Company onPointerOver={onPointerOver} onPointerOut={onPointerOut} onClick={()=>handleActive(0)}  position={[-60,0,-60]}  scale={0.5}  />

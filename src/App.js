@@ -21,16 +21,12 @@ export default function App() {
   
     useFrame(() => {
      if(camera.current){
-      if(vehiclepos.x.toFixed(0)<=-40 && vehiclepos.x.toFixed(0)>=-140 && vehiclepos.z<=-5 && vehiclepos.z>-25){
-        camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-14,-vehiclepos.z.toFixed(0)-25),0.03)
-        camera.current.updateProjectionMatrix();
-      } 
       if (vehiclepos.x.toFixed(0)>=15 && vehiclepos.x.toFixed(0)<=130 && vehiclepos.z<=-50 && vehiclepos.z>=-100){
         camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-14,-vehiclepos.z.toFixed(0)-21),0.03)
         camera.current.updateProjectionMatrix();
       }
-      if (vehiclepos.x.toFixed(0)<=-50 && vehiclepos.x.toFixed(0)>=-155 && vehiclepos.z<=-60 && vehiclepos.z>=-90){
-        camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-24.5,-vehiclepos.z.toFixed(0)-25),0.03)
+      if (vehiclepos.x.toFixed(0)<=-50 && vehiclepos.x.toFixed(0)>=-155 && vehiclepos.z<=-60 && vehiclepos.z>=-110){
+        camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-24.5,-vehiclepos.z.toFixed(0)-28),0.03)
         camera.current.updateProjectionMatrix();
       }else{
        camera.current.position.lerp(vec.set(-vehiclepos.x.toFixed(0),-vehiclepos.y.toFixed(0)-10,-vehiclepos.z.toFixed(0)-20),0.03)
