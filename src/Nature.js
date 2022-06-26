@@ -22,7 +22,7 @@ import cannon2 from './assets/3D/Done/cannon/cannon2.glb'
 import cballs from './assets/3D/Done/cannon/cannonballs.glb'
 import cballs1 from './assets/3D/Done/cannon/cannonballs1.glb'
 import cballs2 from './assets/3D/Done/cannon/cannonballs2.glb'
-import bag from './assets/3D/Done/body-bag.glb'
+
 
 function Nature() {
     return(
