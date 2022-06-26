@@ -1,6 +1,7 @@
-import {useBox,useCylinder,useSphere} from '@react-three/cannon'
+import {useBox,useCylinder,useSphere,useConeTwistConstraint} from '@react-three/cannon'
 import * as THREE from "three"
 import football from './assets/football.jpg'
+import cone from './assets/cone.jpg'
 function Briques() {
 
   
@@ -71,17 +72,22 @@ function Briques() {
         <Box1 args={[1,2,1]} position ={[64,1,-18]} mass={10000}/>
         <Box1 args={[1,2,1]} position ={[74,1,-18]} mass={10000}/>
 
-        <Box1 args={[35,2,1]} position ={[-75,1,-10]} mass={10000}/>
-        <Box1 args={[40,2,1]} position ={[-78,1,-20]} mass={10000}/>
-        <Box1 args={[8,2,1]} position ={[-107,1,-15]} mass={10000} rotation={[0,Math.PI/2,0]} />
-        <Box1 args={[3,2,1]} position ={[-105,1,-19]} mass={10000}  />
-        <Box1 args={[3,2,1]} position ={[-105,1,-11]} mass={10000}  />
+        
+        <Box1 args={[10,2,1]} position ={[-92,1,-14]} mass={10000} rotation={[0,Math.PI/2,0]} />
+        <Box1 args={[3,2,1]} position ={[-90,1,-19]} mass={10000}  />
+        <Box1 args={[3,2,1]} position ={[-90,1,-9]} mass={10000}  />
 
         <Pillar args={[2,2,2,25]} position={[30,0.1,-18]} />
         <Pillar position={[18,0,-121]}/>
         <Pillar position={[0,0,-40]} />
-        <Ball position={[-60, 5, -15]} />
-        
+        <Ball position={[-55, 5, -12]} />
+
+        <Cone position={[-54,5,-20]}  mass={0.4} />
+        <Cone position={[-66,5,-20]} mass={0.4} />
+        <Cone position={[-78,5,-20]} mass={0.4} />
+        <Cone position={[-54,5,-7]}  mass={0.4} />
+        <Cone position={[-66,5,-7]} mass={0.4} />
+        <Cone position={[-78,5,-7]} mass={0.4} />
     </group>
     )
 }
@@ -106,6 +112,17 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
       </mesh>
     )
   }
+  function Cone({ ...props }) {
+    const [ref] = useBox(() => ({...props }))
+    const texture = new THREE.TextureLoader().load(cone)
+    return (
+      <mesh
+      ref={ref}  castShadow >
+        <coneGeometry args={[1,3,32]} />
+        <meshStandardMaterial opacity={1} transparent={true} map={texture}/>
+      </mesh>
+    )
+  }
   function Pillar({ args = [0.5, 0.5, 1, 25], ...props }) {
     const [ref] = useCylinder(() => ({ mass: 600000, args, ...props }))
     return (
@@ -117,7 +134,7 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
   }
    function Ball(props) {
     const [ref] = useSphere(() => ({
-      mass: 1,
+      mass: 2,
       args: 0.5, ...props
     }))
     const texture = new THREE.TextureLoader().load(football)

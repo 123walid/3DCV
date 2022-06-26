@@ -56,7 +56,7 @@ export default function App() {
         <color attach="background" args={['#171720']} />
         <ambientLight color={0xffffff} intensity={0.5} />
         <directionalLight position={[200, 500, 300]} color={0xffffff} intensity={0.5} castShadow penumbra={1} />
-        <Physics broadphase="SAP" contactEquationRelaxation={4} friction={10}>
+        <Physics broadphase="SAP" contactEquationRelaxation={4} friction={1}>
           <Plane rotation={[-Math.PI / 2, 0, 0]} userData={{ id: 'floor' }}/>
           <Vehicle setvehiclepos={setvehiclepos}
           position={[0,4, 0]} camera={camera} rotation={[0,-Math.PI, 0]} angularVelocity={[0, 0.5, 0]} wheelRadius={0.3} />
