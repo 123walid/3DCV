@@ -88,6 +88,8 @@ function Briques() {
         <Cone position={[-54,5,2]}  mass={0.4} />
         <Cone position={[-66,5,2]} mass={0.4} />
         <Cone position={[-78,5,2]} mass={0.4} />
+        <Pillar args = {[0.5, 0.5, 1, 25]} position={[-160,0.1,-50.8]} />
+        <Box1 args={[5.5,2,1]} position ={[-217.3,1,-44.5]} mass={10000} rotation={[0,Math.PI/2,0]}  />
     </group>
     )
 }
@@ -134,12 +136,12 @@ function Box({ args = [1, 0.8, 2],rotation, ...props }) {
   }
    function Ball(props) {
     const [ref] = useSphere(() => ({
-      mass: 2,
+      mass: 1,
       args: 0.5, ...props
     }))
     const texture = new THREE.TextureLoader().load(football)
     return (
-      <mesh castShadow receiveShadow ref={ref}>
+      <mesh  castShadow receiveShadow ref={ref}>
         <sphereGeometry args={[0.5, 64, 64]} />
         <meshLambertMaterial color="white" map={texture}/>
       </mesh>

@@ -1,8 +1,6 @@
 import React,{useState,useCallback,useEffect,forwardRef,useRef} from "react";
 import Model from "./Model";
-import * as THREE from 'three'
-import {  useFrame } from '@react-three/fiber'
-import { OrbitControls, useGLTF, Float, TransformControls, QuadraticBezierLine, Backdrop, ContactShadows } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 // ******************** GLB OBJECTS *************************
 import H1 from './assets/3D/3D_GLB/house/house1.glb'
 import H2 from './assets/3D/Done/building/building-school.glb'
@@ -13,12 +11,14 @@ import company1 from './assets/3D/Done/building/building-office-rounded.glb'
 import company2 from './assets/3D/Done/building/building-office-pyramid.glb'
 import CardText from "./CardText"
 import goal from './assets/3D/Done/goal.glb'
+import sign from './assets/3D/Done/sign/sign.glb'
 
 
 import ImageLoader from "./ImageLoader";
 import img from './assets/elgazela.png';
 import prologic from './assets/prol.jpg'
 import telecome from './assets/telecome.jpg'
+import metaverse from './assets/metaverse.jpg'
 function House() {
   const [txt,setTxt] =useState(-1);
   
@@ -70,6 +70,8 @@ function House() {
         <Goal position={[-90,0,-10]} rotation={[0,-Math.PI/2,0]} scale={[0.04,0.07,0.06]} />
         <Ship position={[-110,8,0]} scale={4} rotation={[0,Math.PI/4,0]} />
         <Spaceman position={[-116,6,3]} />
+        <Sign onPointerOver={onPointerOver} onPointerOut={onPointerOut} position={[-220,0,-45]} scale={[1,2,1]} />
+        <ImageLoader img={metaverse}  position={[-216.5,6.5,-43.5]}  scaleX={7} scaleY={7} rotation={[0,Math.PI/2,0]} />
         <Company onPointerOver={onPointerOver} onPointerOut={onPointerOut} onClick={()=>handleActive(0)}  position={[-60,0,-60]}  scale={0.5}  />
         <Company1 onPointerOver={onPointerOver} onPointerOut={onPointerOut}  onClick={()=>handleActive(1)} position ={[-140,0,-60]}   scale={0.5}/>
         <Company2 onPointerOver={onPointerOver} onPointerOut={onPointerOut}  onClick={()=>handleActive(2)} position ={[-100,0,-60]}   scale={0.5}/>
@@ -77,13 +79,21 @@ function House() {
         {txt===0 && <CardText position={[-54,3.3,-57]} text={"Development of agricultural products traceability application with blockchain technology                      03/2021 - 06/2021"} fontSize={1.5} maxWidth={25} />}
         {txt===1 && <CardText position={[-137,3.3,-60]} text={" -Introduction to working life  -Discovering group work  -Maintenance of IT equipments  01/2019 - 02/2019"} fontSize={1.5} maxWidth={25} />}
         {txt===2 && <CardText position={[-97,3.3,-57]} text={" Development of a desktop data managment application           01/2020 - 02/2020  "} fontSize={1.5} maxWidth={25} />}
-
+        <CardText position={[-215,2,-35]} rotation={[0,Math.PI/2,0]} text={" A simple demo on how to create a metaverse "} fontSize={1.2} maxWidth={17} />
 
 
     </mesh>
     )
 }
 export default House
+function Sign(props ) {
+  return (
+      
+    <mesh onClick={()=>{window.open( "https://github.com/123walid/Metaverse-demo" , '_blank').focus();}} {...props}  >
+     <Model obj={sign} />
+    </mesh>
+  )
+}
 function Goal(props ) {
   return (
       

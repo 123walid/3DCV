@@ -60,7 +60,7 @@ if (reset) {
   })
 
   return (
-    <group ref={vehicle} >
+    <group ref={vehicle}  >
       <Beetle ref={chassis} rotation={props.rotation} position={props.position} angularVelocity={props.angularVelocity} />
       <Wheel ref={wheel1} radius={radius} leftSide />
       <Wheel ref={wheel2} radius={radius} />

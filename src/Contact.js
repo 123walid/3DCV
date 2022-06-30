@@ -8,6 +8,7 @@ import sign from './assets/3D/Done/contact/sign.glb'
 import sign1 from './assets/3D/Done/contact/sign1.glb'
 import flag from './assets/3D/Done/contact/alam2.glb'
 import balloon from './assets/3D/Done/balloon-spotter.glb'
+import sign2 from './assets/3D/Done/contact/sign2.glb'
 function Contact() {
   const [hovered, setHover] = useState(false)
   useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
@@ -21,6 +22,7 @@ function Contact() {
         <Tunisie position={[30,-2.28,-120]} scale={0.5} rotation={[0,-Math.PI/2,0]} />
         <Sign position={[-0.2,-8,-40]} scale={2} />
         <Sign1 position={[0,-8,-40]} rotation={[0,Math.PI/2,0]}  scale={2}/>
+        <Sign2 position={[-160,-15,-50]} scale={3}  rotation={[0,Math.PI/10,0]}/>
         <Flag position={[5,-1,-115]}  />
         <Ballonn position={[-7,13,-150]} />
     </mesh>
@@ -40,6 +42,14 @@ function Flag(props ) {
       
     <mesh {...props} >
      <Model obj={flag} />
+    </mesh>
+  )
+}
+function Sign2(props ) {
+  return (
+      
+    <mesh {...props} >
+     <Model obj={sign2} />
     </mesh>
   )
 }
