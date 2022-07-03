@@ -90,6 +90,7 @@ function Briques() {
         <Cone position={[-78,5,2]} mass={0.4} />
         <Pillar args = {[0.5, 0.5, 1, 25]} position={[-160,0.1,-50.8]} />
         <Box1 args={[5.5,2,1]} position ={[-217.3,1,-44.5]} mass={10000} rotation={[0,Math.PI/2,0]}  />
+        <Box1 args={[5.5,2,1]} position ={[-217.3,1,-64.5]} mass={10000} rotation={[0,Math.PI/2,0]}  />
     </group>
     )
 }
