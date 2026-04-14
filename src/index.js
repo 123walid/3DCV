@@ -1,11 +1,17 @@
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import React from 'react'
 import './styles.css'
 import App from './App'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container)
+
+root.render(
     <Canvas 
-    dpr={[1, 1.5]} shadows
+        dpr={[1, 1.5]} 
+        shadows
     >
-<App /></Canvas>, document.getElementById('root'))
+        <App />
+    </Canvas>
+)

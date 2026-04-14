@@ -1,20 +1,22 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useRaycastVehicle } from '@react-three/cannon'
+import { Quaternion, Euler, Vector3 } from 'three'
 import { useControls } from './utils/useControls'
 import Beetle from './Beetle'
 import Wheel from './Wheel'
 
-function Vehicle({ radius = 0.7,setvehiclepos,width = 1.2, height = -0.04, front = 1.3, back = -1.15, steer = 0.75, force = 1800, maxBrake = 1e10, ...props }) {
+function Vehicle({ targetRef, onPositionChange, ...props }) {
   const chassis = useRef()
   const wheel1 = useRef()
   const wheel2 = useRef()
   const wheel3 = useRef()
   const wheel4 = useRef()
   const controls = useControls()
+  const posHelper = useRef(new Vector3())
 
   const wheelInfo = {
-    radius,
+    radius: 0.7,
     directionLocal: [0, -1, 0],
     suspensionStiffness: 30,
     suspensionRestLength: 0.3,
@@ -29,15 +31,15 @@ function Vehicle({ radius = 0.7,setvehiclepos,width = 1.2, height = -0.04, front
     frictionSlip: 2
   }
 
-  const wheelInfo1 = { ...wheelInfo, isFrontWheel: true, chassisConnectionPointLocal: [-width / 2, height, front] }
-  const wheelInfo2 = { ...wheelInfo, isFrontWheel: true, chassisConnectionPointLocal: [width / 2, height, front] }
-  const wheelInfo3 = { ...wheelInfo, isFrontWheel: false, chassisConnectionPointLocal: [-width / 2, height, back] }
-  const wheelInfo4 = { ...wheelInfo, isFrontWheel: false, chassisConnectionPointLocal: [width / 2, height, back] }
-
   const [vehicle, api] = useRaycastVehicle(() => ({
     chassisBody: chassis,
     wheels: [wheel1, wheel2, wheel3, wheel4],
-    wheelInfos: [wheelInfo1, wheelInfo2, wheelInfo3, wheelInfo4],
+    wheelInfos: [
+      { ...wheelInfo, isFrontWheel: true, chassisConnectionPointLocal: [-0.6, -0.04, 1.3] },
+      { ...wheelInfo, isFrontWheel: true, chassisConnectionPointLocal: [0.6, -0.04, 1.3] },
+      { ...wheelInfo, isFrontWheel: false, chassisConnectionPointLocal: [-0.6, -0.04, -1.15] },
+      { ...wheelInfo, isFrontWheel: false, chassisConnectionPointLocal: [0.6, -0.04, -1.15] }
+    ],
     indexForwardAxis: 2,
     indexRightAxis: 0,
     indexUpAxis: 1
@@ -45,27 +47,43 @@ function Vehicle({ radius = 0.7,setvehiclepos,width = 1.2, height = -0.04, front
 
   useFrame(() => {
     const { forward, backward, left, right, brake, reset } = controls.current
-    for (let e = 2; e < 4; e++) api.applyEngineForce(forward || backward ? force * (forward && !backward ? -1 : 1) : 0, 2)
-    for (let s = 0; s < 2; s++) api.setSteeringValue(left || right ? steer * (left && !right ? 1 : -1) : 0, s)
-    for (let b = 2; b < 4; b++) api.setBrake(brake ? maxBrake : 0, b)
     
-    setvehiclepos(chassis.current.position)
+    // Driving controls
+    api.applyEngineForce(forward || backward ? 1800 * (forward && !backward ? -1 : 1) : 0, 2)
+    api.applyEngineForce(forward || backward ? 1800 * (forward && !backward ? -1 : 1) : 0, 3)
+    api.setSteeringValue(left || right ? 0.75 * (left && !right ? 1 : -1) : 0, 0)
+    api.setSteeringValue(left || right ? 0.75 * (left && !right ? 1 : -1) : 0, 1)
+    api.setBrake(brake ? 1e10 : 0, 2)
+    api.setBrake(brake ? 1e10 : 0, 3)
     
-if (reset) {
-      chassis.current.api.position.set(chassis.current.position.x,chassis.current.position.y,chassis.current.position.z)
+    // Attach chassis to targetRef so camera can follow it
+    if (chassis.current && targetRef) {
+      targetRef.current = chassis.current
+      
+      // For text zones (optional)
+      if (onPositionChange) {
+        posHelper.current.copy(chassis.current.position)
+        onPositionChange(posHelper.current)
+      }
+    }
+    
+    // Reset
+    if (reset && chassis.current?.api) {
+      chassis.current.api.position.set(0, 4, 0)
       chassis.current.api.velocity.set(0, 0, 0)
-      chassis.current.api.angularVelocity.set(0, 0.5, 0)
-      chassis.current.api.rotation.set(0, -Math.PI , 0)
+      chassis.current.api.angularVelocity.set(0, 0, 0)
+      const q = new Quaternion().setFromEuler(new Euler(0, -Math.PI, 0))
+      chassis.current.api.quaternion.set(q.x, q.y, q.z, q.w)
     }
   })
 
   return (
-    <group ref={vehicle}  >
-      <Beetle ref={chassis} rotation={props.rotation} position={props.position} angularVelocity={props.angularVelocity} />
-      <Wheel ref={wheel1} radius={radius} leftSide />
-      <Wheel ref={wheel2} radius={radius} />
-      <Wheel ref={wheel3} radius={radius} leftSide />
-      <Wheel ref={wheel4} radius={radius} />
+    <group>
+      <Beetle ref={chassis} rotation={[0, -Math.PI, 0]} position={[0, 4, 0]} />
+      <Wheel ref={wheel1} radius={0.7} leftSide />
+      <Wheel ref={wheel2} radius={0.7} />
+      <Wheel ref={wheel3} radius={0.7} leftSide />
+      <Wheel ref={wheel4} radius={0.7} />
     </group>
   )
 }

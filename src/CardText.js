@@ -6,8 +6,8 @@ function CardText(props) {
     <Text
       rotation={props.rotation}
       position={props.position}
-      maxWidth = {props.maxWidth}
-      color={"black"}
+      maxWidth={props.maxWidth}
+      color="black"
       fontSize={props.fontSize}
       anchorX="left"
       anchorY="middle"
@@ -17,4 +17,5 @@ function CardText(props) {
     </Text>
   );
 }
+
 export default CardText;
